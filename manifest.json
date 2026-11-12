@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.t3-venture-labs-limited.omaplay",
+  "name": "omaplay",
+  "version": "0.1.0",
+  "author": "T3 Venture Labs",
+  "license": "MIT",
+  "description": "Bar widget and mini player for omaplay, the Omarchy-themed media player based on VLC. Requires the omaplay player.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "omaplay",
+    "description": "Now playing, transport, seek and volume for omaplay, in the bar.",
+    "category": "Media",
+    "aliases": [
+      "vlc",
+      "video",
+      "player",
+      "media"
+    ],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "maxTitleWidth": 180,
+      "hideWhenNotRunning": "Off"
+    },
+    "schema": [
+      {
+        "key": "maxTitleWidth",
+        "type": "integer",
+        "label": "Maximum title width",
+        "min": 0,
+        "max": 600,
+        "defaultValue": 180,
+        "description": "Pixels the title may take in the bar. 0 shows only the icon."
+      },
+      {
+        "key": "hideWhenNotRunning",
+        "type": "enum",
+        "label": "Hide when omaplay is not running",
+        "options": [
+          "Off",
+          "On"
+        ],
+        "defaultValue": "Off",
+        "description": "Hide the widget while omaplay is closed. The keybinding targets keep working."
+      }
+    ]
+  }
+}

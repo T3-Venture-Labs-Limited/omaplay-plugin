@@ -1,0 +1,22 @@
+{
+  "widget.tooltip.idle": "omaplay",
+  "panel.notRunning": "omaplay is not running",
+  "panel.open": "Open omaplay",
+  "panel.show": "Show player",
+  "panel.nothingPlaying": "Nothing playing",
+  "panel.unknownTitle": "Untitled",
+  "panel.previous": "Previous",
+  "panel.next": "Next",
+  "panel.play": "Play",
+  "panel.pause": "Pause",
+  "panel.seek": "Seek",
+  "panel.volume": "Volume",
+  "panel.fullscreen": "Fullscreen",
+  "panel.loop": "Loop",
+  "panel.shuffle": "Shuffle",
+  "panel.loopState.None": "off",
+  "panel.loopState.Track": "track",
+  "panel.loopState.Playlist": "playlist",
+  "panel.shuffleOn": "on",
+  "panel.shuffleOff": "off"
+}
