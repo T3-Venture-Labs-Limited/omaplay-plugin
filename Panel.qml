@@ -74,7 +74,14 @@ Panel {
   function seekTo(seconds) {
     if (present && player.canSeek && length > 0) player.position = Math.max(0, Math.min(length, seconds))
   }
-  function seekBy(delta) { seekTo(position + delta) }
+  // Relative seeks use MPRIS Seek, which the player measures from its real position. Reading `position`
+  // here would be stale (it is only refreshed while the panel is open) and make jumps over- or undershoot.
+  function seekBy(delta) {
+    if (!present || !player.canSeek)
+      return
+    player.seek(delta)
+    player.positionChanged()
+  }
 
   // The position is not pushed by MPRIS; ask for it while the panel is open.
   Timer {
@@ -101,6 +108,8 @@ Panel {
     function previous(): string { if (!root.present) return "unavailable"; root.previous(); return "ok" }
     function volumeUp(): string { if (!root.present) return "unavailable"; root.stepVolume(1); return "ok" }
     function panelState(): string { return root.opened ? "open" : "closed" }
+    // Relative seek in seconds, e.g. `omarchy-shell omaplay seek -10`.
+    function seek(seconds: int): string { if (!root.present) return "unavailable"; root.seekBy(seconds); return "ok" }
     function volumeDown(): string { if (!root.present) return "unavailable"; root.stepVolume(-1); return "ok" }
   }
 
@@ -130,8 +139,8 @@ Panel {
     anchors.bottom: parent.bottom
     width: implicitWidth
     bar: root.bar
-    // 󰐊 play, 󰏤 pause, 󰕧 idle
-    text: root.playing ? "󰏤" : (root.present ? "󰐊" : "󰕧")
+    // 󰐊 play, 󰏤 pause, 󰐍 idle (a play mark in a ring, like the omaplay icon)
+    text: root.playing ? "󰏤" : (root.present ? "󰐊" : "󰐍")
     tooltipText: root.present ? root.heading + (root.artist !== "" ? " — " + root.artist : "") : strings.t("widget.tooltip.idle")
     foreground: root.playing ? root.barForeground : Qt.darker(root.barForeground, 1.5)
     onPressed: function(buttonCode) {

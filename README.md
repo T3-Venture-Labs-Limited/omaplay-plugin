@@ -37,6 +37,7 @@ The plugin registers the IPC target `omaplay`:
 | `omarchy-shell omaplay playPause` | play or pause |
 | `omarchy-shell omaplay next` / `previous` | next or previous item |
 | `omarchy-shell omaplay volumeUp` / `volumeDown` | omaplay's own volume, in 5% steps |
+| `omarchy-shell omaplay seek 10` / `seek -10` | jump forward or back by that many seconds |
 | `omarchy-shell omaplay status` | one line of text, e.g. `playing: Night street.mp4 [0:52/1:08]` |
 
 Each returns `unavailable` while omaplay is not running. For example, in `~/.config/hypr/bindings.lua`:
@@ -45,6 +46,7 @@ Each returns `unavailable` while omaplay is not running. For example, in `~/.con
 o.bind("SUPER + SHIFT + V", "omaplay mini player", "omarchy-shell -q omaplay togglePanel")
 o.bind("SUPER + SHIFT + ]", "omaplay volume up", "omarchy-shell -q omaplay volumeUp")
 o.bind("SUPER + SHIFT + [", "omaplay volume down", "omarchy-shell -q omaplay volumeDown")
+o.bind("SUPER + SHIFT + period", "omaplay forward 10 s", "omarchy-shell -q omaplay seek 10")
 ```
 
 Then run `hyprctl reload` and check `hyprctl configerrors`.
@@ -58,7 +60,8 @@ In the bar widget settings:
 
 ## Mini player keys
 
-Arrows move between the seek bar, transport buttons, volume and "Show player"; Left/Right adjust a slider; Enter activates;
+Arrows move between the seek bar, transport buttons, volume and "Show player"; Left/Right adjust a slider (5 s on the
+seek bar, 5% on the volume); Enter activates;
 Space or `k` play/pause, `n` next, `p` previous, `f` fullscreen, `o` show the player; Esc closes.
 
 ## Remove
