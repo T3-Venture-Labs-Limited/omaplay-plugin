@@ -3,7 +3,9 @@
 A bar widget and keyboard-friendly mini player for [omaplay](https://github.com/T3-Venture-Labs-Limited/omaplay), the
 Omarchy-themed media player based on VLC.
 
-![omaplay in the Omarchy bar](preview.png)
+![The omaplay widget in the Omarchy bar](docs/bar-widget.png)
+
+![The omaplay mini player open over a playing video](preview.png)
 
 - The bar shows what omaplay is playing; click for the mini player, middle-click to pause.
 - Mini player: title, seek bar, previous / play / next / fullscreen, volume, loop and shuffle state, and "Show player".
@@ -76,6 +78,12 @@ Removing the plugin does not touch the omaplay player. Remove that with `sudo pa
 
 Titles and file names are shown as plain text, never as rich text. Artwork is loaded only from local `file://` URLs, so the
 shell never fetches anything from the network. There is no network access at all.
+
+## Issues and contributing
+
+Report problems with the widget or mini player in this repository's issues. Problems with the player itself belong in the
+[omaplay repository](https://github.com/T3-Venture-Labs-Limited/omaplay/issues). Pull requests are welcome; run
+`omarchy plugin validate .` and check `journalctl --user` for QML errors after reloading the shell.
 
 ## License
 
