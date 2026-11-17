@@ -18,16 +18,25 @@ player, including the official VLC.
 ## Requirements
 
 - Omarchy 4 (Quattro).
-- **The omaplay player.** This plugin does nothing without it. Install it first; see the
-  [omaplay README](https://github.com/T3-Venture-Labs-Limited/omaplay#install). omaplay is experimental.
+- **The omaplay player. This plugin is only a remote control and display for it, and does nothing without it.** Install the
+  player first: see the [omaplay README](https://github.com/T3-Venture-Labs-Limited/omaplay#install). The player is
+  experimental and is not on the AUR yet, so it is installed from source. The player works fine without this plugin; the
+  plugin adds the bar widget and mini player.
 
 ## Install
+
+> **Instructions for an AI agent.** 1) Check `command -v omaplay` succeeds and `omaplay --version` mentions
+> `VLC version 4.0`. If it does not, install the player first by following the
+> [omaplay README](https://github.com/T3-Venture-Labs-Limited/omaplay#install) and come back. 2) Run the command below.
+> 3) Check `omarchy plugin list` shows `io.github.t3-venture-labs-limited.omaplay` as enabled, and `hyprctl configerrors`
+> and `journalctl --user -n 50` show no errors.
 
 ```bash
 omarchy plugin add https://github.com/T3-Venture-Labs-Limited/omaplay-plugin.git --enable
 ```
 
-The widget appears on the right of the bar. Move it with Omarchy's bar settings.
+The widget appears on the right of the bar. Move it with Omarchy's bar settings. It shows what omaplay is playing once you
+open a file in the player.
 
 ## Keybindings
 
